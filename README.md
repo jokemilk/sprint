@@ -10,3 +10,7 @@ Copy the tool into any your bin folder, and source the sprint.env in your shell 
 
 [ usage ]
 Type sprint -h in your shell.
+
+[ shortcut ]
+s alias sprint.
+g alias sprint -g.
