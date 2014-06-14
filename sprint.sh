@@ -33,10 +33,12 @@ list="-h -l -s -m -g"
 [ ! -f ${_STACK_} ] && touch ${_STACK_}
 [ ! -f ${_MARKS_} ] && touch ${_MARKS_}
 
-sed --h | grep gnu -q
+sed --h 2>&1 | grep gnu -q
 
 if [ $? = 0 ];then
 	gnu_sed=1
+else
+	gnu_sed=0
 fi
 
 #help
