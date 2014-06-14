@@ -33,6 +33,11 @@ list="-h -l -s -m -g"
 [ ! -f ${_STACK_} ] && touch ${_STACK_}
 [ ! -f ${_MARKS_} ] && touch ${_MARKS_}
 
+sed --h | grep gnu -q
+
+if [ $? = 0 ];then
+	gnu_sed=1
+fi
 
 #help
 if [ "$1" = "-h" ]; then
@@ -61,7 +66,11 @@ fi
 if [ "$1" = "-m" ]; then
 	current_dir=`pwd`
 	[ -n "$2" ] && mark=$2 || mark=`basename ${current_dir}`
-	sed -i '' "/^\ ${mark}/d" ${_MARKS_}
+	if [ $gnu_sed = 1 ]; then
+		sed -i "/^\ ${mark}/d" ${_MARKS_}
+	else
+		sed -i '' "/^\ ${mark}/d" ${_MARKS_}
+	fi
 	echo " ${mark} ${current_dir}" >> ${_MARKS_}
 	echo " ${mark} ${current_dir}"
 	exit 0
@@ -81,7 +90,11 @@ fi
 if [ "$1" = "-d" ]; then
 	#wrong input
 	[ -z "$2" ] && help && exit 0	
-	sed -i '' "/^\ $2/d" ${_MARKS_}
+	if [ $gnu_sed = 1 ]; then
+		sed -i "/^\ $2/d" ${_MARKS_}
+	else
+		sed -i '' "/^\ $2/d" ${_MARKS_}
+	fi
 	cat ${_MARKS_}
 	exit 0
 fi
