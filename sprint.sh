@@ -69,9 +69,9 @@ if [ "$1" = "-m" ]; then
 	current_dir=`pwd`
 	[ -n "$2" ] && mark=$2 || mark=`basename ${current_dir}`
 	if [ $gnu_sed = 1 ]; then
-		sed -i "/^\ ${mark}/d" ${_MARKS_}
+		sed -i "/^\ ${mark}\ /d" ${_MARKS_}
 	else
-		sed -i '' "/^\ ${mark}/d" ${_MARKS_}
+		sed -i '' "/^\ ${mark}\ /d" ${_MARKS_}
 	fi
 	echo " ${mark} ${current_dir}" >> ${_MARKS_}
 	echo " ${mark} ${current_dir}"
@@ -79,7 +79,7 @@ if [ "$1" = "-m" ]; then
 fi
 #sprint to a dir
 if [ "$1" = "-g" ]; then
-	path=$(awk "/\ $2/  { print \$2 }" ${_MARKS_})
+	path=$(awk "/\ $2\ /  { print \$2 }" ${_MARKS_})
 	if [ -n "$path" ];then
 		echo ${path}
 		exit 1
@@ -93,9 +93,9 @@ if [ "$1" = "-d" ]; then
 	#wrong input
 	[ -z "$2" ] && help && exit 0	
 	if [ $gnu_sed = 1 ]; then
-		sed -i "/^\ $2/d" ${_MARKS_}
+		sed -i "/^\ $2\ /d" ${_MARKS_}
 	else
-		sed -i '' "/^\ $2/d" ${_MARKS_}
+		sed -i '' "/^\ $2\ /d" ${_MARKS_}
 	fi
 	cat ${_MARKS_}
 	exit 0
