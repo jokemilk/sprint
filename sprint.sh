@@ -5,17 +5,18 @@ _MARKS_=`echo ~/.sprint.marks`
 
 help()
 {
-	echo "
-		sprint: sprint to a directory
-		usage: sprint [-h] [-l] [-s] [-m <name>] [-g Mark] [-d Mark] <dir>
-			-h:help
-			-l:	list marks
-			-s:	list least 20 dir you go
-			-m:	mark current dir. name is optional, default is the basename, old mark will be replaced.
-			-g: sprint to the mark
-			-d: delete a mark
-			dir:	dir you want to go, the same as cd
-	"
+	echo " 
+sprint: sprint to a directory
+usage: sprint [-h] [-l] [-s] [-m <name>] [-g Mark] [-d Mark] <dir>
+	-h:help
+	-l:	list marks
+	-s:	list least 20 dir you go
+	-m:	mark current dir. name is optional, default is the basename, old mark will be replaced.
+	-g: sprint to the mark
+	-d: delete a mark
+	dir:	dir you want to go, the same as cd
+	
+"
 }
 
 contains()
