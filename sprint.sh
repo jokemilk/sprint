@@ -59,7 +59,13 @@ fi
 #list history stack
 if [ "$1" = "-s" ]; then
 	if [ -s ${_STACK_} ]; then
-		tail -n20 ${_STACK_}
+		tail -n20 ${_STACK_} | cat -n 1>&2  
+		read mm
+		exec 2>/dev/null
+		if [ $mm -le 20 ];then
+			tail -n20 ${_STACK_} | sed -n "${mm},${mm}p"
+			exit 1
+		fi
 	else
 		echo "no history"
 	fi
