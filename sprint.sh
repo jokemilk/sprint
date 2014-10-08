@@ -42,6 +42,14 @@ else
 	gnu_sed=0
 fi
 
+if [ $SPRINT_SYS == "Darwin" ];then
+	gnu_sed=0
+	TAIL="tail -r"
+elif [ $SPRINT_SYS == "Linux" ];then
+	gnu_sed=1
+	TAIL="tac"
+fi
+
 #help
 if [ "$1" = "-h" ]; then
 	help
@@ -59,11 +67,11 @@ fi
 #list history stack
 if [ "$1" = "-s" ]; then
 	if [ -s ${_STACK_} ]; then
-		tail -n20 ${_STACK_} | cat -n 1>&2  
+		$TAIL -n20 ${_STACK_} | cat -n 1>&2  
 		read mm
 		exec 2>/dev/null
 		if [ $mm -le 20 ];then
-			tail -n20 ${_STACK_} | sed -n "${mm},${mm}p"
+			$TAIL -n20 ${_STACK_} | sed -n "${mm},${mm}p"
 			exit 1
 		fi
 	else
