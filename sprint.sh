@@ -73,6 +73,9 @@ if [ "$1" = "-s" ]; then
 		if [ $mm -le 20 ];then
 			$TAIL -n20 ${_STACK_} | sed -n "${mm},${mm}p"
 			exit 1
+		else
+			echo "wrong input"
+			exit 0
 		fi
 	else
 		echo "no history"
