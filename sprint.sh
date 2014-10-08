@@ -42,10 +42,10 @@ else
 	gnu_sed=0
 fi
 
-if [ $SPRINT_SYS == "Darwin" ];then
+if [ $SPRINT_SYS = "Darwin" ];then
 	gnu_sed=0
 	TAIL="tail -r"
-elif [ $SPRINT_SYS == "Linux" ];then
+elif [ $SPRINT_SYS = "Linux" ];then
 	gnu_sed=1
 	TAIL="tac"
 fi
