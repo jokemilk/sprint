@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-_STACK_=`echo ~/.sprint.stack`
-_MARKS_=`echo ~/.sprint.marks`
-
 help()
 {
 	echo " 
