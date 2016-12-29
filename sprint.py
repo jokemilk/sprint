@@ -60,6 +60,7 @@ class Sprint():
         self.marks[arg] = os.getcwd()
         debug(self.marks)
         self.SaveMarks()
+        self.List()
         return 0
 
     def SaveMarks(self):
@@ -72,11 +73,14 @@ class Sprint():
 
     def DeleteMark(self, arg):
         if not arg:
+            print('no input mark')
             return 0
         arg = arg[0]
         if self.marks.has_key(arg):
-            debug('%s deleted' %(arg))
+            print('%s deleted' %(arg))
             self.marks.pop(arg)
+        else:
+            print('no such mark %s' %mark)
         self.List()
         self.SaveMarks()
         return 0
@@ -87,6 +91,7 @@ class Sprint():
             self.SaveStack(self.marks[mark])
             return 1
         else:
+            print('no such mark %s' %mark)
             return 0
 
     def SaveStack(self, dir = None):
