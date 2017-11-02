@@ -34,6 +34,9 @@ class Sprint():
             for l in self.marks_file:
                 ll = l.strip().split()
                 self.marks[ll[0]] = ll[1]
+        else:
+            self.marks_file = open(marks, 'w+')
+            self.marks = {}
 
     def __del__(self):
         if self.marks_file:
