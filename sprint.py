@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 from __future__ import print_function
 import sys, os
@@ -79,17 +79,17 @@ class Sprint():
             print('no input mark')
             return 0
         arg = arg[0]
-        if self.marks.has_key(arg):
+        if arg in self.marks:
             print('%s deleted' %(arg))
             self.marks.pop(arg)
         else:
-            print('no such mark %s' %mark)
+            print('no such mark %s' %arg)
         self.List()
         self.SaveMarks()
         return 0
 
     def Go(self, mark):
-        if self.marks.has_key(mark):
+        if mark in self.marks:
             print(self.marks[mark])
             self.SaveStack(self.marks[mark])
             return 1
@@ -116,7 +116,7 @@ class Sprint():
         for d in self.stack:
             sys.stderr.write('%d %s\n' %(index, d))
             index += 1
-        index = raw_input()
+        index = input()
         try:
             index = int(index) - 1
         except:
